@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/portfolio.css">
+    <script src="script.js" defer></script>
     <title>Brandon's Portfolio Site</title>
 </head>
 <body>
-    <nav>
+    <nav id="menu" class="hidden">
         <li>Projects</li>
         <li><a href="https://bchow5.github.io/resume" class="nav_buttons">Resume</a></li>
         <li><a href="https://bchow5.github.io/writing" class="nav_buttons">Writing</a></li>
@@ -17,17 +18,18 @@
     <div class="thin-line"></div>
 
     <div class="introduction">
-        <img src="./static/headshot_edited.jpg" alt="headshot" id="headshot">
+        <img src="./static/headshot_edited.jpg" alt="headshot" id="headshot" class="hiddenPic">
         <div class="socials">   
-            <a href="https://www.linkedin.com/in/brandon-chow-8254b6153/" target="_blank"><img src="./static/linkedin.png" alt="linkedin icon"></a> 
-            <a href="https://github.com/BChow5" target="_blank"><img src="./static/github.png" alt="github icon"></a> 
-            <a href="mailto:brandonkwchow@gmail.com"><img src="./static/gmail.png" alt="email icon"></a> 
+            <a href="https://www.linkedin.com/in/brandon-chow-8254b6153/" target="_blank" ><img src="./static/linkedin.png" alt="linkedin icon" id="linkedin" class="hiddenPic"></a> 
+            <a href="https://github.com/BChow5" target="_blank" ><img src="./static/github.png" alt="github icon" id="github" class="hiddenPic"></a> 
+            <a href="mailto:brandonkwchow@gmail.com"><img src="./static/gmail.png" alt="email icon" id="email" class="hiddenPic"></a> 
         </div>
-        <p>Hi, my name is <b>Brandon Chow</b>. I blend technical expertise with strong communication skills to bridge the gap between technology and people. With experience in troubleshooting, technical support, and user assistance, I’m dedicated to resolving issues effectively and providing a positive user experience.</p>
+        <p id="intro" class="hiddenPic">Hi, my name is <b>Brandon Chow</b>. I combine technical expertise with strong communication skills to deliver clear and easy to understand documentation for all audiences. With experience in troubleshooting, technical support, and user assistance, I’m dedicated to resolving issues effectively and providing positive user experiences.</p>
     </div>
 
     <div class="projects">
         <h1 id="projectHeader">My Projects</h1>
+
         <div class="project">
             <img src="./static/tech_support.png" alt="tech support icon" class="project_icon">
             <div class="project_info">
@@ -36,6 +38,7 @@
                 <a href="" class="projectButton">Learn More</a>
             </div>
         </div>
+
         <div class="project">
             <img src="./static/technical_writing.png" alt="technical writing icon" class="project_icon">
             <div class="project_info">
@@ -44,6 +47,7 @@
                 <a href="" class="projectButton">Learn More</a>
             </div>
         </div>
+
         <div class="project">
             <img src="./static/user_assistance.png" alt="user assistance icon" class="project_icon">
             <div class="project_info">
@@ -52,6 +56,9 @@
                 <a href="" class="projectButton">Learn More</a>
             </div>
         </div>
-    
+        
+    </div>
+    <img src="./static/up-arrow.png" alt="Back to top button" id="topButton" class="hidden">
+
 </body>
 </html>

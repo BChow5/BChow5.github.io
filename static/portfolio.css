@@ -26,8 +26,12 @@ nav {
     padding: 1rem 2rem;
     background-color: var(--dark-blue);
     grid-template-columns: 8rem 8rem 8rem auto;
-    position: relative; /* Needed to position the thin-line absolutely */
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Sticks the nav at the top of the page */
+    z-index: 1000; /* Ensure the nav is above other content */
 }
+
 nav li {
     font-family: 'GeneralSansSemi',sans-serif;
     display: inline;
@@ -83,6 +87,35 @@ nav li:hover {
     margin: 0; /* No margins needed for the line itself */
 }
 
+#menu {
+    transition: opacity 1s ease-in-out; /* Smooth fade effect */
+  }
+
+/* Hide the button (initial state) */
+.hidden {
+    opacity: 0;
+    visibility: hidden; /* Ensure it's not visible */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Show the button (after scrolling) */
+.visible {
+    opacity: 1;
+    visibility: visible; /* Make it visible */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Positioning for the button */
+#topButton {
+    position: fixed; /* Fixed at the bottom-right corner of the viewport */
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px; /* Adjust the size of the image */
+    height: 50px; /* Adjust the size of the image */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
 /* INTRODUCTION SECTION CSS */
 
 .introduction {
@@ -107,10 +140,15 @@ nav li:hover {
     justify-self: center;
 }
 
+#linkedin, #github, #email {
+    transition: transform 1s ease, opacity 1s ease;
+}
+
 .socials img {
     width: 30px;
     height: 30px;
     margin: 5px;
+    transition: transform 1s ease, opacity 1s ease;
 }
 
 #headshot {
@@ -125,6 +163,23 @@ nav li:hover {
     border: var(--dark-blue) 2px solid;
     grid-column: 2;
     justify-self: center;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+#intro {
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Hidden state (initial state) */
+.hiddenPic {
+    transform: translateY(70px); /* Start 100px below its final position */
+    opacity: 0;
+}
+  
+  /* Visible state (final state) */
+.visiblePic {
+    transform: translateY(0); /* Move to its original position */
+    opacity: 1;
 }
 
 /* PROJECT SECTION CSS */
