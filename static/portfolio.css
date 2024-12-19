@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'GeneralSansSemi';
-    src: url('/fonts/GeneralSans-Semibold.otf') format('opentype');
+    src: url('./fonts/GeneralSans-Semibold.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'GeneralSansMed';
-    src: url('/fonts/GeneralSans-Medium.otf') format('opentype');
+    src: url('./fonts/GeneralSans-Medium.otf') format('opentype');
 }
 
 :root {
@@ -28,7 +28,7 @@ nav {
     grid-template-columns: 8rem 8rem 8rem auto;
     position: relative; /* Needed to position the thin-line absolutely */
 }
-nav li, nav button {
+nav li {
     font-family: 'GeneralSansSemi',sans-serif;
     display: inline;
     color: white;
@@ -48,24 +48,29 @@ nav li:hover {
 }
 
 #contact {
+    font-family: 'GeneralSansSemi',sans-serif;
     grid-column: 4;
     justify-self: end;
     text-decoration: none;
-}
-
-nav button {
-    background-color: transparent;
-    border: white 1px solid;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    justify-self: end;;
-    text-decoration: none;
+    background-color: none; /* Button background color */
+    color: white; /* Text color */
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 0.5rem; /* Rounded corners */
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-nav button:hover {
+#contact:hover {
     background-color: white;
     color: var(--dark-blue);
     transition: all 0.3s ease-in-out;
+}
+
+.nav_buttons {
+    text-decoration: none;
+    color: white;
 }
 
 .thin-line {
@@ -78,7 +83,7 @@ nav button:hover {
     margin: 0; /* No margins needed for the line itself */
 }
 
-/* PROJECTS SECTION CSS */
+/* INTRODUCTION SECTION CSS */
 
 .introduction {
     display: grid;
@@ -87,6 +92,7 @@ nav button:hover {
     gap: 1rem;
     padding: 1rem;
     font-family: 'GeneralSansMed',sans-serif;
+    margin-bottom: 5rem;
 }
 
 .introduction p {
@@ -98,6 +104,7 @@ nav button:hover {
 
 .socials {
     grid-column: 2;
+    justify-self: center;
 }
 
 .socials img {
@@ -118,4 +125,61 @@ nav button:hover {
     border: var(--dark-blue) 2px solid;
     grid-column: 2;
     justify-self: center;
+}
+
+/* PROJECT SECTION CSS */
+
+#projectHeader {
+    font-family: 'GeneralSansSemi',sans-serif;
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 4rem;
+    grid-column: 2;
+}
+
+.secondaryHeader {
+    font-family: 'GeneralSansSemi',sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 0;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;    
+    gap: 1rem;
+    margin-bottom: 5rem;
+}
+
+.project {
+    font-family: 'GeneralSansMed',sans-serif;
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.project p {
+    text-align: left;
+    padding-bottom: 1rem;
+}
+
+.projectButton {
+    font-family: 'GeneralSansSemi', sans-serif;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-blue);
+    color: white; /* Text color */
+    text-align: center;
+    border-radius: 0.5rem; /* Rounded corners */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.projectButton:hover {
+    border: 2px solid var(--dark-blue);
+    background-color: white;
+    color: var(--dark-blue);
 }
