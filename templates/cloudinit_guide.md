@@ -54,6 +54,8 @@ You will be using the terminal to create two plain text files in the `.ssh` dire
 
 > **NOTE:** You will need to change *"youremail@email.com"* to your actual information.
 
+<br>
+
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 ```
@@ -65,10 +67,10 @@ ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 * `-t`: Type of encryption for the key
 * `-f`: Specifying filename and location
 * `-C`: To add a comment
+
 <br>
 
-
-#### Example of Successful key creation:
+**Example of Successful key creation:**
 
 ![Image of the SSH key making confirmation](/Assets/Images/SSH_key_make.png)
 
@@ -85,6 +87,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 * Create an API token
 * Grant Account Access to doctl with an API Token
 * Validate That doctl is Working
+
 <br>
 
 ### Install doctl
@@ -104,11 +107,15 @@ What does this code mean?
 
 ### Create an API Token
 
-This step will be done on [DigitalOcean](https://www.digitalocean.com/) to create a new API token for your account. An API token is a unique identifier used to authenticate and authorize requests to an Application Programming Interface (API). It acts as a digital key that allows applications, scripts, or users to interact with an API securely without needing to provide credentials like usernames and passwords directly.
+This step will be done on [DigitalOcean](https://www.digitalocean.com/) to create a new API token for your account. An API token is a unique identifier used to authenticate and authorize requests to an Application Programming Interface (API). 
+
+It acts as a digital key that allows applications, scripts, or users to interact with an API securely without needing to provide credentials like usernames and passwords directly.
 
 It's important that the API token has both read and write access. It needs write access to be able to create your droplet, otherwise it would only be able to gather information. 
 
 > **NOTE:** The API token string is only displayed once, so be sure to save it in a safe place for late use
+
+<br>
 
 1. Click **API** on the left side menu
 2. Click the **Generate New Token**
@@ -130,6 +137,8 @@ A New Personal Access Token page will appear and you will need to fill out the 
 
 > **NOTE:** Be sure to give this authentication a name by changing "NAME"
 
+<br>
+
 ```bash 
 doctl auth init --context NAME
 ```
@@ -138,21 +147,23 @@ doctl auth init --context NAME
 * `auth`: Used to manage authentication with DigitalOcean
 * `init`: Initializes the authentication process by prompting you to enter a DigitalOcean API token
 * `--context`: Allows you to save the authentication settings under a specific context name
+
 <br>
 
 2. Enter in the API token string (the one you made earlier) when prompted by `doctl auth init`
 2. Copy and run the following code to switch to the correct authenticated account
 
->NOTE: Change "NAME" to the name of the account you want to switch to that appears after `doctl auth list`
+>NOTE: Change "NAME" to the name of the account you want to switch to
 
 ```bash 
 doctl auth list
 doctl auth switch --context NAME
 ```
 
-What does this code mean?
+**What does this code mean?**
 * `list`: Displays a list of all the saved authentications
 * `switch`: Switch between different authentications
+
 <br>
 
 ### Validate that doctl is working
@@ -163,9 +174,10 @@ What does this code mean?
 doctl account get
 ```
 
-What does this code mean?
+*What does this code mean?*
 * `account`: Allows you to manage or retrieve information about the account
 * `get`: Retrieves information about the currently authenticated account
+
 <br>
 
 #### Successful output looks like this:
@@ -182,19 +194,19 @@ You will now add your SSH keys to your DigitalOcean account using doctl. You wil
 
 1. Copy and run the following code to upload your public key to your DigitalOcean account 
 
-> Note: You will need to change "git-user" to your desired key name and "~/.ssh/hw-key.pub" to your public key file location
+> **NOTE:** You will need to change "git-user" to your desired key name and "~/.ssh/hw-key.pub" to your public key file location
+
+<br>
 
 ```bash
 doctl compute ssh-key import git-user --public-key-file ~/.ssh/hw-key.pub
 ```
 
-What does this code mean?
+**What does this code mean?**
 * `compute`: Subcommand for managing DigitalOcean Droplets and other compute-related resources
 * `import`: To import our SSH key
 * `--public-key-file`: Specifies the location of the public key file
 <br>
-
-> NOTE: A successful import will look like this:
 
 ![Image of the public key import to DigitalOcean](/Assets/Images/public_key_upload.png)
 
@@ -212,8 +224,9 @@ cat ~/.ssh/hw-key.pub
 ```
 <br>
 
-What does this code mean?
+**What does this code mean?**
 * `cat`: Short for concatenate. It is used to read and output the contents of a file to the terminal
+
 <br>
 
 ***
@@ -222,11 +235,11 @@ What does this code mean?
 
 This step will teach about creating your droplet on the DigitalOcean using doctl. Droplets are Linux-based virtual machines (VMs) that run on top of virtualized hardware.
 
-#### This section will teach you how to:
-
+**This section will teach you how to:**
 * Upload an Arch Linux Image to DigitalOcean
 * Set up Cloud-Init
 * Create a new Arch Linux Droplet
+
 <br>
 
 ### Upload an Arch Linux Image to DigitalOcean
@@ -246,13 +259,14 @@ You can download the Arch Linux image [here](https://gitlab.archlinux.org/archli
 
 6. Select **Arch Linux** in the Distribution dropdown menu
 2. Select **San Francisco 3** in the Choose a Datacenter Region Section 
-	-  We choose San Francisco 3 as our data center in the example because it is the closest to our location
+	-  You chose San Francisco 3 as the data center in the example because it is the closest to our location
 3. Click **Upload Image** to finish
 <br>
 
 ### Setting up Cloud-Init  
 
-Cloud-init will allow you to set up a server with some initial configurations. For this guide, the example includes packages in the cloud-init configuration that are some examples of commonly used packages (DigitalOcean, 2022). 
+Cloud-init will allow you to set up a server with some initial configurations. For this guide, the example includes packages in the cloud-init configuration that are some examples of commonly used packages 
+
 <br>
 
 1. Copy and run the following code to create your cloud-config.yaml file
@@ -262,8 +276,6 @@ nvim cloud-config.yaml
 ```
 
 2. Copy and paste the following code
-
-#### NOTE: Use "ctrl + shift + v" to paste with the correct formatting 
 
 ```bash 
 #cloud-config
@@ -275,6 +287,7 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh-authorized-keys:
       - ssh-ed25519 your-ssh-public-key # change this
+
 packages:
   - ripgrep
   - rsync
@@ -287,21 +300,22 @@ packages:
 disable_root: true
 ```
 
-What does this code mean?
+**What does this code mean?**
 * `shell: /bin/bash`: Sets the default shell to bash/bin
 * `sudo: ['ALL=(ALL) NOPASSWD:ALL']`: Grants the user full sudo privileges without needing to enter a password
 * `ssh-authorized-keys`: Allows the user to log in via SSH using public key authentication (DigitalOcean, 2014)
 * `disable_root: true:`: Disables root login for the server (DigitalOcean, 2014)
 
 
-3. Press the "i" key after pasting the text to enter insert mode to edit the file contents
+3. Press the `i` key after pasting the text to enter insert mode to edit the file contents
 1. Change the information (at least the ssh-authorized-keys)
-3. Press "esc" key to exit inset mode
-4. Type `:` then `wq` and then press enter key to save and finish 
+3. Press `esc` key to exit inset mode
+4. Type `":"`, then `"wq"`, and then press enter key to save and finish 
 <br>
 
 ### Create a New Arch Linux Droplet
-Back in your terminal, you will be running the following `doctl` command to create the Droplets.
+You will be running the following `doctl` command to create the droplets.
+
 <br>
 
 1. Copy and paste the following code into your terminal 
@@ -311,21 +325,22 @@ doctl compute droplet create --image 165084633 --size s-1vcpu-1gb-amd --region s
 ```
 <br>
 
-What does this code mean?
+**What does this code mean?**
 
-* `doctl compute droplet create`: The command doctl requires to create Droplets (DigitalOcean, 2024)
+* `doctl compute droplet create`: The command doctl requires to create Droplets
 * `--image`: The OS image used to create the Droplet. For this example, the Droplet uses Arch Linux
-* `--size s-1vcpu-1gb`: The number of processors and the amount of RAM each Droplet has. In this case, each Droplet has one processor and 1 GB of RAM. The example chooses a low amount but you will want to choose an appropriate amount based on what you'll be doing with the droplet (do-api.dev, n.d.) 
+* `--size s-1vcpu-1gb`: The number of processors and the amount of RAM each Droplet has. In this case, each Droplet has one processor and 1 GB of RAM. The example chooses a low amount but you will want to choose an appropriate amount based on what you'll be doing with the droplet 
 * `--region sfo3`: The region to create the Droplets in. In this example, doctl deploys the Droplets into the San Francisco 3 datacenter region because it's the closest location. Choose your data center for whichever is the closest location
 * `--ssh-keys`: The SSH keys to import into the Droplet from your DigitalOcean account. You can retrieve a list of available keys by running `doctl compute ssh-key list`
-* `--user-data-file <path-to-your-cloud-init-file>`: Specifies the path to your cloud-config.yaml file. For example, `~/cloud-config.yaml`. (DigitalOcean, 2024)
+* `--user-data-file <path-to-your-cloud-init-file>`: Specifies the path to your cloud-config.yaml file. For example, `~/cloud-config.yaml`
+
 <br>
 
-#### Successful droplet creation looks like:
+**Successful droplet creation looks like:**
 
 ![Image of the completed droplet creation](/Assets/Images/complete_droplet_make.png)
 
-
+<br>
 
 ***
 
@@ -333,6 +348,7 @@ What does this code mean?
 
 1. Open your Terminal
 2. Run the following code to create a config file:
+
 ```bash
 nvim config
 ```
@@ -358,8 +374,8 @@ What does this code mean?
 * `IdentityFile`: The path to the private SSH key on your local machine
 * `StrictHostKeyChecking no`: Disables host key checking
 * `UserKnownHostsFile`: Tells SSH not to store the server's host key in the known hosts file
-<br>
 
+<br>
 
 4. Copy the IP address of the droplet from DigitalOcean
 
@@ -370,34 +386,3 @@ What does this code mean?
 
 
 You're now ready to connect to your droplet using SSH! You can now connect to your droplet by using `ssh arch`. This will depend on what you named your host in the previous steps.
-<br>
-
-## References
-
-DigitalOcean. (2024, September). Droplets documentation. DigitalOcean. https://docs.digitalocean.com/products/droplets/
-
-DigitalOcean. (2022, September). Automate Droplet setup with cloud-init. DigitalOcean. https://docs.digitalocean.com/products/droplets/how-to/automate-setup-with-cloud-init/
-
-DigitalOcean. (2020, April). Install doctl: The DigitalOcean command-line client. DigitalOcean. https://docs.digitalocean.com/reference/doctl/how-to/install/
-
-DigitalOcean. (2024, August). Create a personal access token. DigitalOcean. https://docs.digitalocean.com/reference/api/create-personal-access-token/
-
-Cloud-init. (n.d.). Introduction to cloud-init. Cloud-init. https://docs.cloud-init.io/en/latest/explanation/introduction.html
-
-Cloudflare. (n.d.). What is SSH?. Cloudflare. https://www.cloudflare.com/learning/access-management/what-is-ssh/
-
-DigitalOcean. (n.d.). Droplet list using doctl reference. DigitalOcean. https://docs.digitalocean.com/reference/doctl/reference/compute/droplet/list/
-
-DigitalOcean. (2014, October). How to use cloud-config for your initial server setup. DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-use-cloud-config-for-your-initial-server-setup
-
-DigitalOcean. (2024, April). SSH essentials: Working with SSH servers, clients, and keys. DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
-
-Arch Linux. (n.d.). Cloud-init. Arch Linux. https://wiki.archlinux.org/title/Cloud-init
-
-Arch Linux. (n.d.). Pacman. Arch Linux. https://wiki.archlinux.org/title/Pacman
-
-do-api.dev. (n.d.). Slugs API documentation. https://slugs.do-api.dev/
-
-DigitalOcean. (2024, May). Custom images. DigitalOcean. https://docs.digitalocean.com/glossary/custom-images/
-
-Arch Linux. (n.d.). Arch manual pages. Arch Linux. https://man.archlinux.org/
