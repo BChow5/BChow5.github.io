@@ -9,9 +9,9 @@ description: A guide to cloud initialization.
 
 ## Introduction
 
-In this guide, we'll walk through the process of creating a Arch Linux droplet on DigitalOcean using cloud-Init. Ensuring a smooth and automated setup for your virtual servers! During this process, you will learn how to use doctl, SSH keys, API tokens, and cloud-init.
+This guide will teach you the process of creating a Arch Linux droplet on DigitalOcean using cloud-Init. Ensuring a smooth and automated setup for your virtual servers! During this process, you will learn how to use doctl, SSH keys, API tokens, and cloud-init.
 
- DigitalOcean is a cloud provider that offers the ability to deploy virtual servers, known as *droplets*, and other cloud-based resources like databases, storage, and networking tools (DigitalOcean, 2024). When creating a droplet, we can automate the setup process to save time and create servers with consistent repeatable configurations using Cloud-Init. 
+DigitalOcean is a cloud provider that offers the ability to deploy virtual servers, known as *droplets*, and other cloud-based resources like databases, storage, and networking tools (DigitalOcean, 2024). When creating a droplet, we can automate the setup process to save time and create servers with consistent repeatable configurations using *Cloud-Init*. 
  
 *Cloud-init* is an industry standard tool that allows you to automate the initialization of your Linux instances. This means that you can use a cloud-init file to configure droplets at deployment that automatically sets up things like new users, firewall rules, app installations, and SSH keys (DigitalOcean, 2024). This tutorial uses doctl to add a cloud-init file with information on users, programs, and your SSH key.
 
@@ -37,79 +37,78 @@ In this guide, we'll walk through the process of creating a Arch Linux droplet o
 5. [How to Connect to Your Droplet Using SSH](#How-to-Connect-to-Your-Droplet-Using-SSH)
 6. [References](#References)
 
+<br>
 
 ***
 
 ## How to Create an SSH Key pair
 
-For the initial set up, you will begin by creating a Secure Shell Protocol (SSH) key pair using our local machine. SSH (Secure Shell) key pairs are a more secure alternative to traditional password-based authentication by using Public Key Cryptography (DigitalOcean, 2024).
+For the initial set up, you will begin by creating a *Secure Shell Protocol (SSH)* key pair using our local machine. This key will be used to securely connect to your DigitalOcean account. 
 
-Public Key Cryptography uses a key pair that consists of a public key (which you place on the server) and a private key (which you keep securely on your local machine). This file tells the server which public keys are allowed to access the account without a password. With SSH key authentication, there's no need to worry about using weak or compromised passwords (DigitalOcean, 2024). Once set up, you can connect to the Droplet without needing to type a password each time. Instead, your local machine automatically uses the private key to authenticate you.
-
-In this section, we will be using the terminal to create two plain text files in the `.ssh` directory that will be our keys.
+You will be using the terminal to create two plain text files in the `.ssh` directory that will be our keys.
 - We will create a "hw-key" as our private key
 - And we will create "hw-key.pub" as our public key
 <br> 
 
-
 1. Copy then run the following code and after changing the appropriate information:
+
+> **NOTE:** You will need to change *"youremail@email.com"* to your actual information.
 
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 ```
-#### NOTE: You will need to change *"youremail@email.com"* to your actual information.
 
 <br>
 
-What does this code mean?
-* `ssh-keygen`: Generates the public and private key pair (DigitalOcean, 2024)
+**What does this code mean?**
+* `ssh-keygen`: Generates the public and private key pair
 * `-t`: Type of encryption for the key
 * `-f`: Specifying filename and location
 * `-C`: To add a comment
 <br>
 
 
-#### Successful key creation will look something like this:
+#### Example of Successful key creation:
 
 ![Image of the SSH key making confirmation](/Assets/Images/SSH_key_make.png)
+
 <br> 
 
 ***
 
 ## How to Install Doctl
 
-`doctl` is the official DigitalOcean command line interface (CLI) and it allows you to interact with the DigitalOcean API via the command line (DigitalOcean, 2020).
+`doctl` is the official DigitalOcean command line interface (CLI) and it allows you to interact with the DigitalOcean API via the command line.
 
-#### This section will teach you how to:
+**This section will teach you how to:**
 * Install doctl
 * Create an API token
-* Grant Account Access to Doctl with an API Token
-* Validate That Doctl is Working
+* Grant Account Access to doctl with an API Token
+* Validate That doctl is Working
 <br>
 
-### Install Doctl
+### Install doctl
 
 1. Copy and run the following code to download doctl
 
 ```bash
 sudo pacman -S doctl
 ```
-<br>
 
 What does this code mean?
 * `sudo`: Allows a user to execute a command as the root user
-* `pacman`: The package manager for Arch Linux (Arch Linux, n.d.)
+* `pacman`: The package manager for Arch Linux
 * `-S`: It stands for synchronize and is used install or update packages from official repositories
 
 <br>
 
 ### Create an API Token
 
-This step will be done on [DigitalOcean](https://www.digitalocean.com/) to create a new API token for your account. An API token is a unique identifier used to authenticate and authorize requests to an Application Programming Interface (API). It acts as a digital key that allows applications, scripts, or users to interact with an API securely without needing to provide credentials like usernames and passwords directly (DigitalOcean, 2024).
+This step will be done on [DigitalOcean](https://www.digitalocean.com/) to create a new API token for your account. An API token is a unique identifier used to authenticate and authorize requests to an Application Programming Interface (API). It acts as a digital key that allows applications, scripts, or users to interact with an API securely without needing to provide credentials like usernames and passwords directly.
 
 It's important that the API token has both read and write access. It needs write access to be able to create your droplet, otherwise it would only be able to gather information. 
 
-#### NOTE: The API token string is only displayed once, so be sure to save it in a safe place for late use
+> **NOTE:** The API token string is only displayed once, so be sure to save it in a safe place for late use
 
 1. Click **API** on the left side menu
 2. Click the **Generate New Token**
@@ -129,29 +128,27 @@ A New Personal Access Token page will appear and you will need to fill out the 
 
 1. Copy and run the following code to connect your API token
 
-#### NOTE: Be sure to give this authentication a name by changing "NAME"
+> **NOTE:** Be sure to give this authentication a name by changing "NAME"
 
 ```bash 
 doctl auth init --context NAME
 ```
-<br>
 
-What does this code mean?
+**What does this code mean?**
 * `auth`: Used to manage authentication with DigitalOcean
-* `init`: Initializes the authentication process by prompting you to enter a DigitalOcean API token (DigitalOcean, 2024)
+* `init`: Initializes the authentication process by prompting you to enter a DigitalOcean API token
 * `--context`: Allows you to save the authentication settings under a specific context name
 <br>
 
 2. Enter in the API token string (the one you made earlier) when prompted by `doctl auth init`
 2. Copy and run the following code to switch to the correct authenticated account
 
-#### NOTE: Change "NAME" to the name of the account you want to switch to that appears after `doctl auth list`
+>NOTE: Change "NAME" to the name of the account you want to switch to that appears after `doctl auth list`
 
 ```bash 
 doctl auth list
 doctl auth switch --context NAME
 ```
-<br>
 
 What does this code mean?
 * `list`: Displays a list of all the saved authentications
@@ -165,7 +162,6 @@ What does this code mean?
 ```bash 
 doctl account get
 ```
-<br>
 
 What does this code mean?
 * `account`: Allows you to manage or retrieve information about the account
@@ -186,20 +182,19 @@ You will now add your SSH keys to your DigitalOcean account using doctl. You wil
 
 1. Copy and run the following code to upload your public key to your DigitalOcean account 
 
-#### Note: You will need to change "git-user" to your desired key name and "~/.ssh/hw-key.pub" to your public key file location
+> Note: You will need to change "git-user" to your desired key name and "~/.ssh/hw-key.pub" to your public key file location
 
 ```bash
 doctl compute ssh-key import git-user --public-key-file ~/.ssh/hw-key.pub
 ```
-<br>
 
 What does this code mean?
 * `compute`: Subcommand for managing DigitalOcean Droplets and other compute-related resources
 * `import`: To import our SSH key
-* `--public-key-file`: Specifies the location of the public key file (DigitalOcean, 2024)
+* `--public-key-file`: Specifies the location of the public key file
 <br>
 
-#### NOTE: A successful import will look like this:
+> NOTE: A successful import will look like this:
 
 ![Image of the public key import to DigitalOcean](/Assets/Images/public_key_upload.png)
 
@@ -208,7 +203,6 @@ What does this code mean?
 ```bash 
 doctl compute ssh-key list
 ```
-* `list`: Display a list
 <br>
 
 If you need to get the contents of your public key, you can run the following code:

@@ -1,0 +1,21 @@
+#cloud-config
+users:
+  - name: student #change me
+    primary_group: student #change me
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 your-ssh-public-key # change this
+
+packages:
+  - ripgrep
+  - rsync
+  - neovim
+  - fd
+  - less
+  - man-db
+  - bash-completion
+  - tmux
+
+disable_root: true
