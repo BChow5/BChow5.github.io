@@ -1,8 +1,3 @@
----
-layout: default
-title: Cloudinit Guide
----
-
 # Guide to Create Virtual Servers on Digital Ocean using Cloud-Init for Arch Linux Users
 
 ## Introduction
