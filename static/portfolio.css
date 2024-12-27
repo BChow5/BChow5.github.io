@@ -8,6 +8,11 @@
     src: url('./fonts/GeneralSans-Medium.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'GeneralSansLight';
+    src: url('./fonts/GeneralSans-Light.otf') format('opentype');
+}
+
 :root {
     --dark-blue: #111827;
 }
@@ -195,6 +200,14 @@ nav li:hover {
 .secondaryHeader {
     font-family: 'GeneralSansSemi',sans-serif;
     font-size: 1.5rem;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.tools {
+    font-family: 'GeneralSansLight',sans-serif;
+    font-size: 1rem;
     text-align: left;
     margin: 0;
 }

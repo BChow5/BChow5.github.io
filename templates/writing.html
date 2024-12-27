@@ -4,17 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/portfolio.css">
+    <script src="../script.js" defer></script>
     <title>Brandon's Portfolio Site</title>
 </head>
 <body>
-    <nav>
-        <li>Projects</li>
-        <li>Resume</li>
-        <li>Writing</li>
-        <a href="mailto:brandonkwchow@gmail.com" id="contact"><button>Contact Me</button></a> 
+    <nav id="menu" class="hidden">
+        <li><a href="../index.html" class="nav_buttons">Projects</a></li>
+        <li><a href="./resume.html" class="nav_buttons">Resume</a></li>
+        <li><a href="./writing.html" class="nav_buttons">Writing</a></li>
+        <a href="mailto:brandonkwchow@gmail.com" id="contact">Contact Me</a>
         <div class="thin-line"></div>
     </nav>
-    <div class="thin-line"></div>
+
+    <div class="projects">
+        <h1 id="projectHeader">Writing Samples</h1>
+
+        <div class="project">
+            <img src="./static/tech_support.png" alt="tech support icon" class="project_icon">
+            <div class="project_info">
+                <h2 class="secondaryHeader">Guide to Create Virtual Servers on Digital Ocean using Cloud-Init</h2>
+                <h3 class="tools"> Tools used: Markdown</h3>
+                <p>An educational guide for students to learn about creating droplets on DigitcalOcean and using cloud-init files for automatic configutation.</p>
+                <a href="./cloudinit_guide.html" class="projectButton">Learn More</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="./static/technical_writing.png" alt="technical writing icon" class="project_icon">
+            <div class="project_info">
+                <h2 class="secondaryHeader">Technical Writing</h2>
+                <h3 class="tools"> Tools used: Markdown</h3>
+                <p>Created user guides, manuals, and documentation for software applications, hardware products, and technical processes.</p>
+                <a href="" class="projectButton">Learn More</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="./static/user_assistance.png" alt="user assistance icon" class="project_icon">
+            <div class="project_info">
+                <h2 class="secondaryHeader">User Assistance</h2>
+                <h3 class="tools"> Tools used: Markdown</h3>
+                <p>Provided user assistance and training for software applications, hardware products, and technical processes.</p>
+                <a href="" class="projectButton">Learn More</a>
+            </div>
+        </div>
     
 </body>
 </html>
