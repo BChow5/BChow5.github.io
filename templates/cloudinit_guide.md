@@ -20,6 +20,7 @@ DigitalOcean is a cloud provider that offers the ability to deploy virtual serve
 - Neovim installed on your system
 - The Arch Linux disk image
 - All code provided should be run through the Terminal
+
 <br>
 
 ## Table of Contents
@@ -59,9 +60,6 @@ You will be using the terminal to create two plain text files in the `.ssh` dire
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 ```
-
-<br>
-
 **What does this code mean?**
 * `ssh-keygen`: Generates the public and private key pair
 * `-t`: Type of encryption for the key
@@ -97,8 +95,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/hw-key -C "youremail@email.com"
 ```bash
 sudo pacman -S doctl
 ```
-
-What does this code mean?
+**What does this code mean?**
 * `sudo`: Allows a user to execute a command as the root user
 * `pacman`: The package manager for Arch Linux
 * `-S`: It stands for synchronize and is used install or update packages from official repositories
@@ -129,6 +126,7 @@ A New Personal Access Token page will appear and you will need to fill out the 
 3. Select **Full Access** (this will give the API token both read and write access)
 4. Click **Generate Token**
 5. Save your API token somewhere safe for later use
+
 <br>
 
 ### Granting Account Access to Doctl with an API Token
@@ -174,13 +172,13 @@ doctl auth switch --context NAME
 doctl account get
 ```
 
-*What does this code mean?*
+**What does this code mean?**
 * `account`: Allows you to manage or retrieve information about the account
 * `get`: Retrieves information about the currently authenticated account
 
 <br>
 
-#### Successful output looks like this:
+**Successful output looks like this:**
 
 ![Image of doctl validation confirmation](/Assets/Images/doctl_validate.png)
 
@@ -217,13 +215,11 @@ doctl compute ssh-key list
 ```
 <br>
 
-If you need to get the contents of your public key, you can run the following code:
+*If you need to get the contents of your public key, you can run the following code:*
 
 ```bash 
 cat ~/.ssh/hw-key.pub
 ```
-<br>
-
 **What does this code mean?**
 * `cat`: Short for concatenate. It is used to read and output the contents of a file to the terminal
 
@@ -255,12 +251,13 @@ You can download the Arch Linux image [here](https://gitlab.archlinux.org/archli
 4. Click the blue **Upload Image** button.
 5. Upload the Arch Linux image
 
-#### NOTE: After clicking upload, a new settings box will open and you will need to select the following settings
+> NOTE: After clicking upload, a new settings box will open and you will need to select the following settings
 
 6. Select **Arch Linux** in the Distribution dropdown menu
 2. Select **San Francisco 3** in the Choose a Datacenter Region Section 
 	-  You chose San Francisco 3 as the data center in the example because it is the closest to our location
 3. Click **Upload Image** to finish
+
 <br>
 
 ### Setting up Cloud-Init  
@@ -275,7 +272,7 @@ Cloud-init will allow you to set up a server with some initial configurations. F
 nvim cloud-config.yaml
 ```
 
-2. Copy and paste the following code
+2. Copy and paste the following code into the file
 
 ```bash 
 #cloud-config
@@ -311,6 +308,7 @@ disable_root: true
 1. Change the information (at least the ssh-authorized-keys)
 3. Press `esc` key to exit inset mode
 4. Type `":"`, then `"wq"`, and then press enter key to save and finish 
+
 <br>
 
 ### Create a New Arch Linux Droplet
@@ -323,8 +321,6 @@ You will be running the following `doctl` command to create the droplets.
 ```bash 
 doctl compute droplet create --image 165084633 --size s-1vcpu-1gb-amd --region sfo3 --ssh-keys 43491384 --user-data-file ~/cloud-config.yaml --wait exampleDroplet
 ```
-<br>
-
 **What does this code mean?**
 
 * `doctl compute droplet create`: The command doctl requires to create Droplets
@@ -364,9 +360,7 @@ Host arch
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
 ```
-<br>
-
-What does this code mean?
+**What does this code mean?**
 * `Host`: The host alias you use when you run the SSH command
 * `HostName`: The IP address of the droplet you're connecting to
 * `User`: The username to be used when connecting to the remote host
