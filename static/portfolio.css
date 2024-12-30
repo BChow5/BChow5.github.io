@@ -228,9 +228,13 @@ nav li:hover {
     font-size: 1rem;
 }
 
-.project p {
+.project_body {
     text-align: left;
     padding-bottom: 1rem;
+}
+
+.project_info {
+    grid-column: 2;
 }
 
 .projectButton {
@@ -250,4 +254,11 @@ nav li:hover {
     border: 2px solid var(--dark-blue);
     background-color: white;
     color: var(--dark-blue);
+}
+
+.thumbnail {
+    grid-column: 1;
+    justify-self: center;
+    width: 350px;
+    height: 250px;
 }
