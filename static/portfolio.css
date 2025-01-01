@@ -262,3 +262,40 @@ nav li:hover {
     width: 350px;
     height: 250px;
 }
+
+/* ------------------------------------ Specific Page Info --------------------------------- */
+
+.infoPara {
+    font-family: 'GeneralSansMed',sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 0px;
+    grid-column: 2;
+}
+
+.sectionHeader {
+    font-family: 'GeneralSansSemi',sans-serif;
+    font-size: 2rem;
+    text-align: left;   
+    grid-column: 2;
+}
+
+.infoSection {
+    grid-column: 2;
+}
+
+.infoDetails {
+    grid-template-columns: 40% 60%;
+}
+
+.infoDetails p{
+    grid-column: 2;
+}
+
+#bookPreview {
+    margin-top: 50px;
+    width: 900px;
+    height: auto;
+    grid-column: 2;
+    justify-self: center;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/portfolio.css">
+    <script src="../script.js" defer></script>
+    <title>Brandon's Portfolio Site</title>
+</head>
+<body>
+    <nav id="menu" class="hidden">
+        <li><a href="../index.html" class="nav_buttons">Portfolio</a></li>
+        <li><a href="./resume.html" class="nav_buttons">Resume</a></li>
+        <li><a href="./writing.html" class="nav_buttons">Writing</a></li>
+        <a href="mailto:brandonkwchow@gmail.com" id="contact">Contact Me</a>
+        <div class="thin-line"></div>
+    </nav>
+    <div class="projects">
+        <img src="../static/book_thumbnail.png" alt="" id="bookPreview">
+        <p class="infoPara"> BookTracker is a web based book tracking application that helps users organize their reading habits by managing their reading lists and tracking progress. It was designed for avid readers who want to keep track of books they are reading, have read, or plan to read.</p>
+
+        <div class="infoSection">
+            <h2 class="sectionHeader">Features</h2>
+            <ul class="infoPara">
+                <li>Search and add books using the OpenLibrary API.</li>
+                <li>Track reading progress with visual indicators.</li>
+                <li>Sort and filter books by title, author, rating, or status.</li>
+                <li>Mark books as read, currently reading, or want to read.</li>
+            </ul>
+        </div>
+        
+        <div class="infoSection">
+            <h2 class="sectionHeader">Technology Used</h2>
+            <ul class="infoPara">
+                <li>Frontend: HTML, CSS, JavaScript</li>
+                <li>Backend: Python, Flask</li>
+                <li>Database: SQLite</li>
+                <li>API Integration: Open Library API</li>
+            </ul>
+
+            <!-- <p class="infoPara">
+                Integrating the Open Library API initially presented challenges because of formatting inconsistent in the book information. To resolve this, I added several error handling and validation functions to ensure the app displayed the correct information.
+            </p> -->
+        </div>
+
+        <div class="infoSection">
+            <h2 class="sectionHeader">Future Improvements</h2>
+            <ul class="infoPara">
+                <li>Integreate the New York times API user authentication for secure login and registration.</li>
+                <li>Allow users to create custom reading lists and share with others.</li>
+                <li>Integrate Goodreads API for more book information and reviews.</li>
+        </div>
+        
+        
+    </div>
+    
+        <img src="../static/up-arrow.png" alt="Back to top button" id="topButton" class="hidden">
+</body>
+</html>

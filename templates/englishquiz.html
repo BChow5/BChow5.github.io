@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/portfolio.css">
+    <script src="../script.js" defer></script>
+    <title>Brandon's Portfolio Site</title>
+</head>
+<body>
+    <nav id="menu" class="hidden">
+        <li><a href="../index.html" class="nav_buttons">Portfolio</a></li>
+        <li><a href="./resume.html" class="nav_buttons">Resume</a></li>
+        <li><a href="./writing.html" class="nav_buttons">Writing</a></li>
+        <a href="mailto:brandonkwchow@gmail.com" id="contact">Contact Me</a>
+        <div class="thin-line"></div>
+    </nav>
+    <div class="projects">
+        <img src="../static/book_thumbnail.png" alt="" id="bookPreview">
+        <p class="infoPara"> This project was for a web based application that helped children learn more English vocabluary through fun and interactive games. It was designed for parents and teachers who want more engaging ways for their children to improve vocabulary. It motivated children by incorporating game-like elements such as scoreboards, timed game modes, and achievement milestones. </p>
+
+        <div class="infoSection">
+            <h2 class="sectionHeader">Features</h2>
+            <ul class="infoPara">
+                <li>Vocabulary and definition quizzes.</li>
+                <li>Scoreboards to track progress and compete with others.</li>
+                <li>Timed game mode to challenge users.</li>
+                <li>Achievement milestones to celebrate and track progress.</li>
+                <li>Customizable difficulty levels.</li>
+            </ul>
+        </div>
+        
+        <div class="infoSection">
+            <h2 class="sectionHeader">Technology Used</h2>
+            <ul class="infoPara">
+                <li>Frontend: HTML, CSS, JavaScript</li>
+                <li>Backend: Python, Flask</li>
+                <li>Database: SQLite</li>
+                <li>API Integration: Dicionary API</li>
+            </ul>
+
+            <!-- <p class="infoPara">
+                Integrating the Open Library API initially presented challenges because of formatting inconsistent in the book information. To resolve this, I added several error handling and validation functions to ensure the app displayed the correct information.
+            </p> -->
+        </div>
+
+        <div class="infoSection">
+            <h2 class="sectionHeader">Future Improvements</h2>
+            <ul class="infoPara">
+                <li>Allow users to create custom avatars.</li>
+                <li>Provide analytics for children's strengths, weaknesses, and areas of improvement.</li>
+            </ul>
+        </div>
+        
+    </div>
+    
+        <img src="../static/up-arrow.png" alt="Back to top button" id="topButton" class="hidden">
+</body>
+</html>
