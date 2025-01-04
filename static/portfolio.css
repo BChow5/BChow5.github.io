@@ -110,7 +110,8 @@ nav li:hover {
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* Positioning for the button */
+/* ---------------------------------- DESKTOP VIEWS -------------------------------- */
+    /* Positioning for the button */
 #topButton {
     position: fixed; /* Fixed at the bottom-right corner of the viewport */
     bottom: 1rem;
@@ -299,3 +300,15 @@ nav li:hover {
     grid-column: 2;
     justify-self: center;
 }
+
+/* ---------------------------------- MOBILE VIEWS -------------------------------- */
+@media screen and (max-width: 600px) {  
+    .projects {
+        display: inline-block;
+    }
+
+    .project {
+        display: inline-block;
+    }
+}
+
