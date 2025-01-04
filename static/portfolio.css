@@ -303,6 +303,14 @@ nav li:hover {
 
 /* ---------------------------------- MOBILE VIEWS -------------------------------- */
 @media screen and (max-width: 1110px) {  
+    
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        width: 100%; /* Ensure the body doesn't exceed the viewport width */
+    }
+    
     .projects {
         display: inline-block;
     }
@@ -327,8 +335,66 @@ nav li:hover {
         display: block;
     }
 
-    /* body {
-        margin: right;
-    } */
+    #headshot {
+        width: 20rem;
+        height: 20rem;
+        margin: 1rem;
+        margin-top: 5rem;
+        padding: 0;
+        border-radius: 50%; /* Makes the image circular */
+        object-fit: cover; /* Ensures the image scales correctly */
+        object-position: 50% 20%; /* Moves the image down */
+        border: var(--dark-blue) 2px solid;
+        grid-column: 2;
+        justify-self: center;
+        transition: transform 1s ease, opacity 1s ease;
+        display: block;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        padding: 1rem;
+        background-color: var(--dark-blue);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+    }
+    
+    /* Style for the nav items */
+    nav li, 
+    #contact {
+        font-family: 'GeneralSansSemi', sans-serif;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem; /* Adjust for better readability on mobile */
+        margin-bottom: 1rem; /* Space between items */
+        text-align: center; /* Center-align text */
+    }
+    
+    /* Contact button specific styles */
+    #contact {
+        padding: 0.5rem 1rem;
+        border: 1px solid white;
+        border-radius: 0.5rem;
+        font-size: 1.2rem;
+        margin: 0 auto; /* Center the button */
+    }
+    
+    #contact:hover {
+        background-color: white;
+        color: var(--dark-blue);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Thin line styling */
+    .thin-line {
+        opacity: 0; /* Hide the line on mobile */
+    }
+
+    .infoPara {
+        font-size: 1em;
+    }
 }
 
