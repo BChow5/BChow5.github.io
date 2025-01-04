@@ -268,7 +268,7 @@ nav li:hover {
 
 .infoPara {
     font-family: 'GeneralSansMed',sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-align: left;
     margin-bottom: 0px;
     grid-column: 2;
@@ -276,7 +276,7 @@ nav li:hover {
 
 .sectionHeader {
     font-family: 'GeneralSansSemi',sans-serif;
-    font-size: 2rem;
+    font-size: 2em;
     text-align: left;   
     grid-column: 2;
 }
@@ -302,7 +302,7 @@ nav li:hover {
 }
 
 /* ---------------------------------- MOBILE VIEWS -------------------------------- */
-@media screen and (max-width: 600px) {  
+@media screen and (max-width: 1110px) {  
     .projects {
         display: inline-block;
     }
@@ -310,5 +310,25 @@ nav li:hover {
     .project {
         display: inline-block;
     }
+
+    .thumbnail {
+        justify-self: center;
+    }
+
+    .projects {
+        margin: 5px;
+    }
+
+    #bookPreview {
+        margin-top: 50px;
+        width: 400px;
+        height: auto;
+        grid-column: 2;
+        display: block;
+    }
+
+    /* body {
+        margin: right;
+    } */
 }
 
